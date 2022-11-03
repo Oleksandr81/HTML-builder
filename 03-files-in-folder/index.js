@@ -10,10 +10,10 @@ fs.readdir(folderPath, { withFileTypes: true }, (error, files) => {
             const filePath = path.join(__dirname, '/secret-folder', file.name);
             const fileName = path.basename(filePath);
 
-            fs.stat(filePath, (err, stats) => {
-                if (err) return console.err(err.message);
-                const fileSize = Math.fround(stats.size / 1024).toFixed(2);
-                console.log(fileName.split(".").join(" - ") + ' -', fileSize + 'kB');
+            fs.stat(filePath, (error, stats) => {
+                if (error) return console.error(error.message);
+                const fileSize = Math.fround(stats.size / 1024).toFixed(3);
+                console.log(fileName.split(".").join(" - ") + ' -', fileSize + 'kb');
             });
         }
     });
